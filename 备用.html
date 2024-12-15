@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LungAI-胸部CT智能诊断系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <!-- 引入 GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+
+<!-- 引入 ScrollTrigger 插件 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="备用.css">
+            </head>
+
+<body class="min-h-screen bg-gradient-to-b from-gray-100 via-cyan-100 to-blue-200 text-gray-800">
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <!-- Website Title -->
+            <div class="text-3xl font-extrabold text-cyan-400 tracking-wide">
+                LungAI-胸部CT智能诊断系统
+            </div>
+            <!-- Navigation Bar -->
+            <nav class="hidden md:flex items-center gap-8">
+                <!-- Modified navigation links with smooth scrolling -->
+                <a href="#features" class="nav-link text-gray-300 hover:text-cyan-400 transition duration-300">
+                    功能
+                </a>
+                <a href="#design" class="nav-link text-gray-300 hover:text-cyan-400 transition duration-300">
+                    设计
+                </a>
+                <a href="#components" class="nav-link text-gray-300 hover:text-cyan-400 transition duration-300">
+                    核心
+                </a>
+                <a href="#program" class="nav-link text-gray-300 hover:text-cyan-400 transition duration-300">
+                    AI发展
+                </a>
+                <a href="#chat" class="nav-link text-gray-300 hover:text-cyan-400 transition duration-300">
+                    AI智能问诊
+                </a>
+
+
+
+                <!-- 修改登录按钮，添加点击事件 -->
+<button class="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-full transition duration-300" id="login-button">
+    登录
+</button>
+
+<!-- 添加关闭按钮 -->
+<div id="login-modal" class="hidden fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 relative">
+        <button id="close-login-modal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800">
+            &times;
+        </button>
+        <h2 class="text-2xl font-bold mb-4 text-center">登录</h2>
+        <form id="login-form">
+            <div class="mb-4">
+                <label class="block text-gray-700">账户</label>
+                <input type="text" id="username" class="w-full border-gray-300 rounded-lg p-2" required />
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">密码</label>
+                <input type="password" id="password" class="w-full border-gray-300 rounded-lg p-2" required />
+            </div>
+            <button type="submit" class="bg-cyan-500 text-white px-4 py-2 rounded-lg w-full">登录</button>
+        </form>
+    </div>
+</div>
+
+
+
+<!-- 用户头像和退出按钮 -->
+<div id="profile-menu" class="hidden relative">
+    <img src="/image/user-avatar.png" alt="头像" class="w-10 h-10 rounded-full cursor-pointer" id="avatar">
+    <button id="logout-button" class="hidden absolute top-12 right-0 bg-white text-gray-700 px-4 py-2 rounded-lg shadow-md hover:bg-gray-100">
+        退出登录
+    </button>
+</div>
+
+
+
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section class="hero-section relative h-screen bg-gradient-to-b from-[#4682B4] to-[#5A9BD5]">
+        <div class="hero-bg absolute inset-0 bg-cover bg-center bg-no-repeat">
+            <div class="hero-overlay absolute inset-0 bg-gradient-to-b from-black/80 via-gray-800/60 to-blue-700/60 flex justify-center items-center">
+                <div class="container mx-auto text-center text-white px-6">
+                    <h1 class="hero-title text-4xl md:text-7xl font-extrabold mb-4">
+                        精确分析CT图像
+                    </h1>
+                    <p class="hero-text text-lg md:text-xl mb-6 italic text-gray-100">
+                        ————致力于帮助每一位肺病患者
+                    </p>
+                    <a href="#features" class="hero-button bg-cyan-500 text-lg rounded-full shadow-lg transform transition duration-300 hover:scale-110 focus:outline-none animate-underlineClick" onclick="smoothScrollTo(event, 'features')">
+                        开始体验
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Features Section -->
+    <section id="features" class="features-section">
+        <div class="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#5A9BD5] via-[#87CEEB] to-transparent">
+          </div>
+        <!-- Gradient overlay -->
+        <div class="gradient-overlay">
+
+        </div>
+
+        <div class="background-image">
+
+        </div> <!-- Background Image -->
+
+        <div class="container">
+            <h2 class="section-title">
+                主要功能
+            </h2>
+            <div class="feature-buttons">
+                <button class="feature-btn" data-feature="1">肺部CT分析</button>
+                <button class="feature-btn" data-feature="2">炎症诊断</button>
+                <button class="feature-btn" data-feature="3">AI医生智能诊断</button>
+                <button class="feature-btn" data-feature="4">综合数据分析</button>
+            </div>
+            <div id="feature-display" class="feature-item hidden">
+                <div class="feature-content">
+                    <img id="feature-image" src="" alt="" class="feature-image">
+                    <div class="feature-info">
+                        <h3 id="feature-title" class="feature-title"></h3>
+                        <p id="feature-description" class="feature-description"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-text">
+                <p class="footer-description">
+                    多方位、多角度保护您的肺部健康
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Design Description -->
+    <section id="design" class="py-24 bg-gradient-to-b from-white to-gray-400">
+        <div class="container mx-auto px-4">
+
+            <h2 class="text-4xl font-bold mb-16 text-center text-cyan-500 animate-slideInFromBottom">
+                项目设计说明
+            </h2>
+
+            <!-- Grid layout to arrange content -->
+            <div class="grid md:grid-cols-2 gap-12 items-stretch"> <!-- Using items-stretch to align both columns -->
+                <!-- Left Column: Architecture Design -->
+                <div class="card bg-gray-200 p-8 rounded-lg shadow-xl hover:scale-105 transition-transform duration-500 flex flex-col"> <!-- Added flex to center content vertically -->
+                    <img src="/image/AI机器人.png?width=500&height=300" alt="AI Medical" class="rounded-lg shadow-md mx-auto mb-6">
+                    <h3 class="text-3xl font-semibold text-cyan-500 text-center mb-4">
+                        架构设计
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed text-left">
+                        &emsp;我们专注于利用CT影像对<u>支气管肺炎</u>、<u>肺癌</u>及<u>肺部大面积形变</u>进行智能诊断。借助<u>ESP32-S3</u>的高性能计算能力和集成的AI算法，系统能够高效解读胸部CT图像，识别出这些特定的肺部疾病及异常变化。对于支原体肺炎和支气管肺炎，诊断依赖于对炎症区域的精准检测和特征提取；而在肺癌检测中，系统则重点分析肿瘤形态、大小及其对周围组织的影响。对于大面积肺部形变，通过对比CT影像中的肺部结构变化，系统可评估形变程度及可能的病理原因。
+                    </p>
+                </div>
+
+                <!-- Right Column: Core Technologies and Future Directions -->
+                <div class="flex flex-col gap-12 h-full">
+                    <!-- Core Technologies -->
+                    <div class="card bg-gray-200 p-8 rounded-lg shadow-xl hover:scale-105 transition-transform duration-500 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-semibold text-cyan-500 mb-0">核心优势</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>
+                                <span class="font-semibold">数据预处理:</span>从医疗机构收集的CT图像进行标准化处理，并进行标注和预处理。
+                            </li>
+                            <li>
+                                <span class="font-semibold">模型训练:</span> 基于深层神经网络（CNN）等深度学习技术，开发高精度的诊断模型。
+                            </li>
+                            <li>
+                                <span class="font-semibold">模型评估:</span> 使用多种指标对模型进行评测，包括准确率、召回率等。
+                            </li>
+                            <li>
+                                <span class="font-semibold">系统集成:</span> 将算法嵌入到智能诊断系统中，实现自动化检测和结果展示。
+                            </li>
+                            <li>
+                                <span class="font-semibold">临床验证:</span> 由资深医生团队进行验证，实现AI与医生的协同诊断。
+                            </li>
+                            <li>
+                                <span class="font-semibold">用户界面:</span> 为医生和患者设计友好的操作界面，提供清晰检测结果和辅助信息。
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Future Directions -->
+                    <div class="card bg-gray-200 p-8 rounded-lg shadow-xl hover:scale-105 transition-transform duration-500 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-semibold text-cyan-500 mb-6">
+                            未来方向
+                        </h3>
+                        <p class="text-gray-600">
+                            &emsp;基于ESP32-S3的胸部CT智能诊断系统未来将支持更多疾病诊断（如肺结核、肺气肿、冠心病），并通过AI算法和云计算实现更高的精准度、实时监控和远程诊断。该系统还将用于健康管理和个性化治疗，为医生和患者提供更全面的医疗支持!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心技术 -->
+<section id="components" class="components-section">
+    <div class="container">
+        <h2 class="section-title">核心技术</h2>
+        <div class="nav-buttons">
+            <button class="nav-button" data-target="software">开发板</button>
+            <button class="nav-button" data-target="vision">追踪识别算法</button>
+            <button class="nav-button" data-target="deep-learning">深度学习算法</button>
+            <button class="nav-button" data-target="cloud-support">云端支持</button>
+            <button class="nav-button" data-target="user-interface">用户界面</button>
+        </div>
+
+        <!-- 圆柱体容器 -->
+        <div class="cylinder-container">
+            <div class="cylinder">
+                <!-- 每个面板内容 -->
+                <div class="panel" id="software">
+                    <img src="/image/硬件.png" alt="Development Board">
+                    <h3>硬件基础</h3>
+                    <p>采用云边端技术架构，将算法部署至华为国产Atlas200IDK A2开发者套件中通过叶进行检测推理操作降低云端运算压力。.</p>
+                </div>
+                <div class="panel" id="vision">
+                    <img src="/image/视频流.png" alt="Computer Vision">
+                    <h3>追踪识别</h3>
+                    <p>采用先进的图像追踪识别技术,实现采集图像时的自动识别、追踪并采集</p>
+                </div>
+                <div class="panel" id="deep-learning">
+                    <img src="/image/深度学习.png" alt="Deep Learning">
+                    <h3>深度学习</h3>
+                    <p> 项目基于长和算法可视化开发平台研究的CT检测算法，使用3D-CNN模型，实现对肺炎，肺不张，心脏肿大等疾病的异常检测及定位。</p>
+                </div>
+                <div class="panel" id="cloud-support">
+                    <img src="/image/云端储存.png" alt="Cloud Support">
+                    <h3>云端支持</h3>
+                    <p>项目采用河南省鲲鹏服务器保障数据安全，运用高并发管理能力实现微秒级延迟。通过海量并发高弹性管理前端数据。</p>
+                </div>
+                <div class="panel" id="user-interface">
+                    <img src="/image/CT前端主页.png" alt="User Interface">
+                    <h3>用户界面</h3>
+                    <p>项目针对医生和患者分别打造了qt端及APP端，以及用于宣传的web网页。多端交互，关生可进行推理操作，患老查找检测报告。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 控制按钮 -->
+        <div class="button-container">
+            <button class="btn-rotate" data-step="1">&#8592;</button>
+            <button class="btn-rotate" data-step="-1">&#8594;</button>
+        </div>
+    </div>
+</section>
+<!-- AI Development -->
+<section id="program" class="py-32 bg-gradient-to-b from-blue-200 to-gray-300"> <!-- Increase vertical spacing -->
+    <div class="container mx-auto max-w-6xl px-6"> <!-- Add maximum width and horizontal padding -->
+        <div class="grid md:grid-cols-2 gap-16"> <!-- Increase grid spacing -->
+            <!-- Left Column: AI Diagnostic Development Process -->
+            <div class="animate-slideInFromLeft">
+                <h2 class="text-center text-4xl font-bold mb-10 text-cyan-400">AI诊断发展历程</h2>
+                <div class="space-y-8"> <!-- Increase paragraph spacing -->
+                    <p class="leading-relaxed text-lg">AI诊断发展经历了多个阶段，从早期的规则引擎到如今的深度学习方法，AI在医学影像分析中的表现越来越出色：</p>
+                    <ul class="list-disc pl-8 space-y-4 text-lg"> <!-- Adjust list line spacing and font size -->
+                        <li>规则引擎：基于规则和专家经验编写规则，进行初步诊断，灵活性和准确性有限。</li>
+                        <li>机器学习：数据量的增加，使用传统的机器学习方法如支持向量机（SVM）和随机森林进行特征提取和分类。</li>
+                        <li>深度学习：卷积神经网络（CNN）等深度学习技术，实现端到端的诊断。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column: Reliability of AI Diagnosis -->
+            <div class="animate-slideInFromRight">
+                <h2 class="text-center text-4xl font-bold mb-10 text-cyan-400">AI诊断的可靠性</h2>
+                <div class="space-y-8"> <!-- Increase paragraph spacing -->
+                    <p class="leading-relaxed text-lg">AI在医学影像分析中的可靠性是一个关键问题，为了确保AI诊断的准确性，我们采取以下措施：</p>
+                    <ul class="list-disc pl-8 space-y-4 text-lg"> <!-- Adjust list line spacing and font size -->
+                        <li>数据集：使用公开的医学影像分析数据集进行训练和测试，如MedSeg、Camelyon16等。</li>
+                        <li>数据增强：通过随机翻转、旋转和缩放等操作，增加训练集的多样性。</li>
+                        <li>大量临床数据：使用大量真实病例进行模型训练,确保模型的泛化能力。</li>
+                        <li>多轮验证：通过不同的验证集和交叉验证方法评估模型性能，减少过拟合风险。</li>
+                        <li>持续优化：结合医生的反馈和意见，不断优化和调整算法。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="text-center mt-16 text-gray-500 text-lg italic"> <!-- Increase top margin and font size -->
+        注：AI诊断系统能够提供可靠的诊断结果，但应作为医生的辅助工具，而非完全替代。
+    </p>
+</section>
+
+<!-- AI Consultation -->
+<section id="chat" class="ai-doctor-chat py-24 bg-gradient-to-b from-gray-300 to-gray-100">
+    <div class="max-w-2xl mx-auto">
+        <div class="chatbox-container p-6">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="chat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                    </svg>
+                </div>
+                <div class="font-bold text-lg text-cyan-400">AI医生智能问诊</div>
+            </div>
+
+            <!-- Chatbox Body -->
+            <div class="chatbox-body" id="chatbox-body">
+                <!-- AI initial message -->
+                <div class="chat-message ai-message animate-slideInFromLeft">
+                    <img src="/image/ai-avatar.png" class="avatar" alt="AI Avatar">
+                    <span>你好，早日康复，请问您有什么症状？</span>
+                </div>
+            </div>
+
+            <!-- Chatbox Footer -->
+            <div class="flex gap-2 mt-4 chatbox-footer">
+                <input type="text" id="user-input" placeholder="请输入你的问题..." onkeypress="handleKeyPress(event)">
+
+                <button onclick="sendMessage()" class="send-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer bg-gray-900 text-white py-16 border-t border-cyan-400">
+    <div class="container mx-auto px-4">
+        <div class="footer-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- CT Diagnostic System -->
+            <div>
+                <h3 class="footer-heading">CT 诊断系统</h3>
+                <ul class="footer-list space-y-2">
+                    <li class="footer-item">智能医疗影像分析平台</li>
+                </ul>
+            </div>
+
+            <!-- About -->
+            <div>
+                <h3 class="footer-heading">关于</h3>
+                <ul class="footer-list space-y-2">
+                    <li class="footer-item">团队介绍</li>
+                    <li class="footer-item">联系我们</li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div>
+                <h3 class="footer-heading">服务</h3>
+                <ul class="footer-list space-y-2">
+                    <li class="footer-item">影像分析</li>
+                    <li class="footer-item">智能诊断</li>
+                </ul>
+            </div>
+
+            <!-- Help Center -->
+            <div>
+                <h3 class="footer-heading">帮助中心</h3>
+                <ul class="footer-list space-y-2">
+                    <li class="footer-item">使用指南</li>
+                    <li class="footer-item">常见问题</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
+            <p>© 2024 CT AI诊断系统. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+
+
+
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const loginButton = document.getElementById('login-button');
+                        const loginModal = document.getElementById('login-modal');
+                        const closeLoginModal = document.getElementById('close-login-modal');
+                        const loginForm = document.getElementById('login-form');
+                        const profileMenu = document.getElementById('profile-menu');
+                        const avatar = document.getElementById('avatar');
+                        const logoutButton = document.getElementById('logout-button');
+
+                        // 显示登录弹窗
+                        loginButton.addEventListener('click', () => {
+                            loginModal.classList.remove('hidden');
+                        });
+
+                        // 关闭登录弹窗
+                        closeLoginModal.addEventListener('click', () => {
+                            loginModal.classList.add('hidden');
+                        });
+
+                        // 登录表单提交
+                        loginForm.addEventListener('submit', (event) => {
+                            event.preventDefault();
+                            const username = document.getElementById('username').value.trim();
+                            const password = document.getElementById('password').value.trim();
+
+                            if (username && password) {
+                                loginModal.classList.add('hidden');
+                                profileMenu.classList.remove('hidden');
+                                loginButton.classList.add('hidden');
+                            } else {
+                                alert('请输入有效的用户名和密码！');
+                            }
+                        });
+
+                        // 鼠标悬浮显示退出按钮
+                        avatar.addEventListener('mouseover', () => {
+                            logoutButton.classList.remove('hidden');
+                        });
+
+                        // 鼠标移开隐藏退出按钮
+                        avatar.addEventListener('mouseout', () => {
+                            setTimeout(() => {
+                                if (!logoutButton.matches(':hover')) { // 检测按钮是否仍在悬浮
+                                    logoutButton.classList.add('hidden');
+                                }
+                            }, 100); // 延迟隐藏，避免鼠标移动过快
+                        });
+
+                        // 鼠标悬浮到退出按钮时保持显示
+                        logoutButton.addEventListener('mouseover', () => {
+                            logoutButton.classList.remove('hidden');
+                        });
+
+                        // 鼠标移出退出按钮后隐藏
+                        logoutButton.addEventListener('mouseout', () => {
+                            logoutButton.classList.add('hidden');
+                        });
+
+                        // 点击退出登录
+                        logoutButton.addEventListener('click', () => {
+                            profileMenu.classList.add('hidden'); // 隐藏头像区域
+                            loginButton.classList.remove('hidden'); // 显示登录按钮
+                        });
+                    });
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    //主要功能
+        const features = [
+        {
+            id: 1,
+            title: '肺部CT分析',
+            description: '精确识别肺部异常，辅助诊断各类肺部疾病。我们的AI系统能够快速分析CT图像，标记可疑区域，并提供详细的分析报告，帮助医生更准确、更快速地做出诊断。',
+            image: '/image/肺炎 CT 图像.png',
+        },
+        {
+            id: 2,
+            title: '炎症诊断',
+            description: '快速识别炎症特征，提供准确的诊断建议。我们的系统能够检测各种类型的肺部炎症，包括细菌性和病毒性肺炎，并根据炎症的严重程度和分布情况给出治疗建议。',
+            image: '/image/炎症.png',
+        },
+        {
+            id: 3,
+            title: 'AI医生智能诊断',
+            description: '结合AI技术，提供全面的智能诊断报告。我们的AI医生系统整合了大量的医学知识和临床经验，能够模拟专家级别的诊断思维，为患者提供个性化的诊断和治疗方案。',
+            image: '/image/QQ机器人.png',
+        },
+        {
+            id: 4,
+            title: '综合数据分析',
+            description: '多维度数据整合，为临床决策提供支持。我们的系统不仅分析CT图像，还结合患者的病史、实验室检查结果等多方面信息，提供更全面、更准确的诊断支持。',
+            image: '/image/qt端.png',
+        },
+    ];
+
+    const featureButtons = document.querySelectorAll('.feature-btn');
+    const featureDisplay = document.getElementById('feature-display');
+    const featureImage = document.getElementById('feature-image');
+    const featureTitle = document.getElementById('feature-title');
+    const featureDescription = document.getElementById('feature-description');
+
+    featureButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const featureId = parseInt(this.getAttribute('data-feature'));
+            const feature = features.find(f => f.id === featureId);
+
+            if (feature) {
+                featureImage.src = feature.image;
+                featureImage.alt = feature.title;
+                featureTitle.textContent = feature.title;
+                featureDescription.textContent = feature.description;
+
+                featureDisplay.classList.remove('hidden');
+                featureDisplay.classList.remove('fade-in');
+                void featureDisplay.offsetWidth; // Trigger reflow
+                featureDisplay.classList.add('fade-in');
+
+                // Scroll to the feature display
+
+            }
+
+            // Highlight the active button
+            featureButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Initially display the first feature
+    featureButtons[0].click();
+    const buttons = document.querySelectorAll('.btn-toggle');
+    const components = document.querySelectorAll('.component');
+    const sections = document.querySelectorAll('.animate-section');
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    function initializeAnimations() {
+        // 初始化按钮动画
+        gsap.from(buttons, {
+            opacity: 0,
+            y: 0,
+            stagger: 0.2,
+            duration: 1,
+            ease: "elastic.out(1.5, 0.5)",
+            onComplete: () => pulseButtons()
+        });
+
+        // 初始化组件动画
+        gsap.set(components, { opacity: 0, scale: 0.8 });
+        showComponent('software');
+
+        // 初始化滚动动画
+        sections.forEach(section => {
+            gsap.from(section, {
+                opacity: 0,
+                y: 100,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+    }
+
+    function pulseButtons() {
+        gsap.to(buttons, {
+            scale: 1.05,
+            duration: 0.5,
+            ease: "power2.inOut",
+            stagger: 0.1,
+            yoyo: true,
+            repeat: -1
+        });
+    }
+
+    function showComponent(targetId) {
+        components.forEach(comp => {
+            if (comp.id === targetId) {
+                gsap.to(comp, {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.8,
+                    ease: "elastic.out(1, 0.5)",
+                    onStart: () => comp.classList.remove('hidden')
+                });
+            } else {
+                gsap.to(comp, {
+                    opacity: 0,
+                    scale: 0.8,
+                    duration: 0.5,
+                    ease: "back.in(1.5)",
+                    onComplete: () => comp.classList.add('hidden')
+                });
+            }
+        });
+    }
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const target = this.getAttribute('data-target');
+
+            // 按钮点击动画
+            gsap.to(this, {
+                scale: 0.1,
+                duration: 0.1,
+                ease: "power2.in",
+                yoyo: true,
+                repeat: 1
+            });
+
+            // 光晕效果
+            const glow = document.createElement('div');
+            glow.className = 'button-glow';
+            this.appendChild(glow);
+            gsap.to(glow, {
+                scale: 2,
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.out",
+                onComplete: () => glow.remove()
+            });
+
+            showComponent(target);
+        });
+    });
+
+    initializeAnimations();
+});
+
+                    //核心技术
+                    const cylinder = document.querySelector('.cylinder');
+                    const panels = document.querySelectorAll('.panel');
+                    const rotateButtons = document.querySelectorAll('.btn-rotate');
+                    const navButtons = document.querySelectorAll('.nav-button');
+
+                    let currentAngle = 0;
+                    const angleStep = 360 / panels.length;
+
+                    // 设置初始位置
+                    panels.forEach((panel, index) => {
+                        const angle = index * angleStep;
+                        panel.style.transform = `translate(0%, 10%) rotateY(${angle}deg) translateZ(350px)`;
+                    });
+
+                    // 圆柱旋转逻辑
+                    rotateButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            const step = parseInt(button.getAttribute('data-step'), 10);
+                            currentAngle += step * angleStep;
+                            cylinder.style.transform = `translate(-50%, -50%) rotateY(${currentAngle}deg)`; // 保持居中
+                        });
+                    });
+
+                    // 导航按钮事件
+                    navButtons.forEach((button, index) => {
+                        button.addEventListener('click', () => {
+                            const angle = -index * angleStep;
+                            currentAngle = angle;
+                            cylinder.style.transform = `translate(-50%, -50%) rotateY(${angle}deg)`; // 保持居中
+
+                        });
+                    });
+
+                    // GSAP 动画触发
+                    panels.forEach(panel => {
+                        gsap.from(panel, {
+                            scrollTrigger: {
+                                trigger: panel,
+                                start: "top 50%", // 当面板进入视口时触发
+                                toggleActions: "play none none none",
+                            },
+                            rotateY: 90,       // 初始旋转角度
+                            translateZ: -200, // 初始距离
+                            duration: 1,      // 动画持续时间
+                            ease: "power2.out"
+                        });
+                    });
+
+
+
+    // AI诊断 添加消息到聊天框
+    function addMessage(role, content) {
+        const chatboxBody = document.getElementById('chatbox-body');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('chat-message', role === 'user' ? 'user-message' : 'ai-message', 'animate-slideInFrom' + (role === 'user' ? 'Right' : 'Left'));
+
+        const avatar = document.createElement('img');
+        avatar.src = role === 'user' ? '/image/user-avatar.png' : '/image/ai-avatar.png';
+        avatar.className = 'avatar';
+
+        const textElement = document.createElement('span');
+        textElement.textContent = content;
+
+        if (role === 'user') {
+            messageElement.appendChild(textElement);
+            messageElement.appendChild(avatar);
+        } else {
+            messageElement.appendChild(avatar);
+            messageElement.appendChild(textElement);
+        }
+
+        chatboxBody.appendChild(messageElement);
+        chatboxBody.scrollTop = chatboxBody.scrollHeight;  // 滚动到底部
+    }
+
+    // 处理 Enter 键事件
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
+
+    // 发送消息到后端 (Python API)
+    
+function sendMessage() {
+    const userInput = document.getElementById('user-input').value;
+
+    if (userInput.trim() === "") {
+        alert("请输入您的问题");
+        return;
+    }
+
+    // 添加用户消息到聊天框
+    addMessage('user', userInput);
+    document.getElementById('user-input').value = '';
+
+    // 调用 Vercel 后端
+    fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt: userInput }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // 添加 AI 回复到聊天框
+        addMessage('ai', data.result);
+    })
+    .catch(function(error) {
+        console.error('Error:', error);
+        addMessage('ai', '抱歉，发生了一个错误。请稍后再试。');
+    });
+}
+
+    // 平滑滚动到目标位置
+    function smoothScrollTo(event, targetId) {
+        event.preventDefault(); // 防止默认锚点跳转
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+</script>
+
+    </body>
+    </html>
